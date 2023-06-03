@@ -1,0 +1,15 @@
+.page {
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #000;
+    color:#fff;
+    font-family: 'Inter', 'Arial', sans-serif;
+}
+
+@media screen and (min-width: 880px) and (max-width:1080px) {
+    .page {
+        padding: 0 50px;
+    }
+}

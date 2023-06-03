@@ -1,0 +1,9 @@
+.element__container {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    padding: 22px 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+}

@@ -1,0 +1,15 @@
+.form {
+    position: relative;
+    max-width: 430px;
+    margin: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 540px) {
+    .form {
+        max-width: 282px;
+        min-height: 322px;
+    }
+}
