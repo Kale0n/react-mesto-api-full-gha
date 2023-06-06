@@ -41,7 +41,7 @@ function App() {
         setCards(initialCards); 
       })
       .catch((err) => {console.log(err)})
-    }, [])
+    }, [loggedIn])
 
   function handleCardClick(card) {
     setSelectedCard(card);
