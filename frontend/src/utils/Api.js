@@ -6,7 +6,7 @@ class Api {
 
     _checkResponse(res) {
         if (res.ok) {
-            return res.json();
+            return res.json().then(json => json.data);
           }
           return Promise.reject(`Ошибка: ${res.status}`)
     }
@@ -87,7 +87,7 @@ class Api {
 const api = new Api({ 
     baseUrl: 'https://api.kaleon.nomoredomains.rocks',
     headers: {
-        authorization: '',
+        authorization: 'Bearer ' + localStorage.token,
         'Content-Type': 'application/json'}
 });
 

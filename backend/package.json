@@ -20,17 +20,18 @@
   },
   "homepage": "https://github.com/Kale0n/express-mesto-gha#readme",
   "devDependencies": {
+    "cors": "^2.8.5",
     "eslint": "^8.40.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "nodemon": "^2.0.22",
-    "validator": "^13.9.0",
-    "cors": "^2.8.5"
+    "validator": "^13.9.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "express-winston": "^4.2.0",
     "jsonwebtoken": "^9.0.0",
