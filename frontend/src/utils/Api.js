@@ -4,6 +4,13 @@ class Api {
         this._headers = Parameters.headers;
     }
 
+    _getHeaders() {
+        return {
+            ...this._headers,
+            authorization: 'Bearer ' + localStorage.token,
+        }
+    }
+
     _checkResponse(res) {
         if (res.ok) {
             return res.json().then(json => json.data);
@@ -12,19 +19,19 @@ class Api {
     }
 
     getInitialCards() {     
-        return fetch(`${this._url}/cards`, {headers: this._headers})
+        return fetch(`${this._url}/cards`, {headers: this._getHeaders()})
         .then(this._checkResponse);
     }
 
     getUserInfo() {
-        return fetch(`${this._url}/users/me`, {headers: this._headers})
+        return fetch(`${this._url}/users/me`, {headers: this._getHeaders()})
         .then(this._checkResponse);
     }
 
     editProfile({name, about}) {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
-            headers:this._headers,
+            headers:this._getHeaders(),
             body: JSON.stringify({
               name: name,
               about: about
@@ -35,7 +42,7 @@ class Api {
     addNewCard({name, link}) {
         return fetch( `${this._url}/cards`, {
             method: 'POST',
-            headers:this._headers,
+            headers:this._getHeaders(),
             body: JSON.stringify({
                 name: name,
                 link: link
@@ -47,14 +54,14 @@ class Api {
     likeCard(cardId) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'PUT',
-            headers:this._headers
+            headers:this._getHeaders()
         }).then(this._checkResponse);
     }
 
     dislikeCard(cardId) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'DELETE',
-            headers:this._headers
+            headers:this._getHeaders()
         }).then(this._checkResponse);
     }
 
@@ -69,14 +76,14 @@ class Api {
     deleteCard(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: 'DELETE',
-            headers:this._headers
+            headers:this._getHeaders()
         }).then(this._checkResponse);
     }
 
     changeAvatar({avatar}) {
         return fetch( `${this._url}/users/me/avatar`, {
             method: 'PATCH',
-            headers:this._headers,
+            headers:this._getHeaders(),
             body: JSON.stringify({
                 avatar: avatar
             })
@@ -87,7 +94,6 @@ class Api {
 const api = new Api({ 
     baseUrl: 'https://api.kaleon.nomoredomains.rocks',
     headers: {
-        authorization: 'Bearer ' + localStorage.token,
         'Content-Type': 'application/json'}
 });
 
