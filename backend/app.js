@@ -1,9 +1,9 @@
 const http2 = require('http2');
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
-const {cors} = require('cors')
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const { celebrate, Joi, errors } = require('celebrate');
 const indexRouter = require('./routes/index');
 const { login, createUser } = require('./controllers/users');
@@ -13,7 +13,7 @@ const { URL_REGEXP } = require('./utils/regexps');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(cors())
+app.use(cors());
 
 const { HTTP_STATUS_NOT_FOUND } = http2.constants;
 

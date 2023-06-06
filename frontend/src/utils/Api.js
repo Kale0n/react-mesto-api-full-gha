@@ -85,9 +85,9 @@ class Api {
 }
 
 const api = new Api({ 
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
+    baseUrl: 'https://api.kaleon.nomoredomains.rocks',
     headers: {
-        authorization: 'e23e9d74-b9a4-46ab-8ae0-9136da4b8229',
+        authorization: '',
         'Content-Type': 'application/json'}
 });
 
