@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.157.246
+IP: 84.201.157.246
 
 Frontend https://kaleon.nomoredomains.rocks/
 
