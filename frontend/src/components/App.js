@@ -36,12 +36,12 @@ function App() {
       tokenCheck();
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([User, initialCards]) => {
+        console.log(localStorage.token)
         setCurrentUser(User)
-
         setCards(initialCards); 
       })
       .catch((err) => {console.log(err)})
-    }, [loggedIn])
+    }, [email])
 
   function handleCardClick(card) {
     setSelectedCard(card);
