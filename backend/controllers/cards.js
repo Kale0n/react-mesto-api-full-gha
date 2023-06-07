@@ -7,27 +7,27 @@ const {
 } = http2.constants;
 
 module.exports.getCards = (req, res, next) => {
-  Card.find({})
+  Card.find({}).populate('owner').populate('likes')
     .then((cards) => res.send({ data: cards }))
     .catch(next);
 };
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
-  Card.create({ name, link, owner: req.user._id })
+  Card.create({ name, link, owner: req.user._id }).populate('owner').populate('likes')
     .then((card) => res.status(HTTP_STATUS_CREATED).send({ data: card }))
     .catch(next);
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  Card.findById(req.params.cardId)
+  Card.findById(req.params.cardId).populate('owner').populate('likes')
     .then((card) => {
       if (card == null) {
         throw new NotFoundError('Карточка с указанным _id не найдена.');
-      } else if (card.owner.toString() !== req.user._id) {
+      } else if (card.owner._id.toString() !== req.user._id) {
         throw new WrongUserError('Вы не являетесь хозяином карточки');
       }
-      return Card.findByIdAndRemove(req.params.cardId);
+      return Card.findByIdAndRemove(req.params.cardId).populate('owner').populate('likes');
     })
     .then(() => res.send({ message: 'Пост удален' }))
     .catch(next);
@@ -38,7 +38,7 @@ module.exports.likeCard = (req, res, next) => {
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
     { new: true },
-  )
+  ).populate('owner').populate('likes')
     .then((card) => {
       if (card == null) {
         throw new NotFoundError('Карточка с указанным _id не найдена.');
@@ -54,7 +54,7 @@ module.exports.dislikeCard = (req, res, next) => {
     req.params.cardId,
     { $pull: { likes: req.user._id } },
     { new: true },
-  )
+  ).populate('owner').populate('likes')
     .then((card) => {
       if (card == null) {
         throw new NotFoundError('Карточка с указанным _id не найдена.');
