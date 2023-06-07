@@ -34,12 +34,14 @@ function App() {
 
     useEffect(() => {
       tokenCheck();
-      Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([User, initialCards]) => {
-        setCurrentUser(User)
-        setCards(initialCards); 
-      })
-      .catch((err) => {console.log(err)})
+      if (loggedIn) {
+        Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([User, initialCards]) => {
+          setCurrentUser(User)
+          setCards(initialCards); 
+        })
+        .catch((err) => {console.log(err)})
+      }
     }, [email])
 
   function handleCardClick(card) {
