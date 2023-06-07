@@ -8,7 +8,7 @@ const {
 
 module.exports.getCards = (req, res, next) => {
   Card.find({}).populate('owner').populate('likes')
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send({ data: cards.reverse() }))
     .catch(next);
 };
 
