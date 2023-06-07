@@ -36,7 +36,6 @@ function App() {
       tokenCheck();
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([User, initialCards]) => {
-        console.log(localStorage.token)
         setCurrentUser(User)
         setCards(initialCards); 
       })
