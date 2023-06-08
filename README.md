@@ -5,11 +5,11 @@
   
 Вот [ссылка](https://kaleon.nomoredomains.rocks/) на сайт.
 
-Адрес репозитория: [https://github.com/Kale0n/react-mesto-api-full-gha] (https://github.com/Kale0n/react-mesto-api-full-gha)
+Адрес репозитория: https://github.com/Kale0n/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес 84.201.157.246
+IP 84.201.157.246
 
 Frontend https://kaleon.nomoredomains.rocks/
 
