@@ -13,7 +13,7 @@ import ImagePopup from './ImagePopup'
 import InfoToolPopup from './InfoToolTip'
 import api from '../utils/Api'
 import {CurrentUserContext} from '../contexts/CurrentUserContext'
-import {authorize, register, getContent} from './Auth'
+import {authorize, register, getContent} from '../utils/Auth'
 
 
 function App() {
@@ -165,7 +165,10 @@ function App() {
           navigate('/', {replace: true});
       }
     })
-    .catch(err => console.log(err));
+    .catch((e) => {
+      setInfoToolPopupOk(false)
+      handleInfoToolPopupClick()
+    })
   }
 
   function handleSignOut () {
